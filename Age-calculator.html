@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Age-calculator.css">
+    <script src="Age-calculator.js"></script>
+</head>
+
+<body>
+    <img src="ages.webp" alt="">
+    <div class="Age-calculator">
+        <div class="heading">Age calculator</div>
+        <div class="dates-area">
+            <!-- <div class="row">
+                <div class="cell"></div>
+                <div class="cell">Months</div>
+                <div class="cell">day</div>
+                <div class="cell">year</div>
+            </div>
+            <div class="row">
+                <div class="cell">Date of Birth:</div>
+                <div class="cell" id="input-md"><input type="number"></div>
+                <div class="cell" id="input-md"><input type="number"></div>
+                <div class="cell"><input type="number"></div>
+            </div>
+            <div class="row">
+                <div class="cell">Current Date:</div>
+                <div class="cell" id="input-md"><input type="number"></div>
+                <div class="cell" id="input-md"><input type="number"></div>
+                <div class="cell"><input type="number"></div>
+            </div> -->
+            <div class="grid-data" id="div1"></div>
+            <div class="grid-data" style="padding-left: 1px;">Months</div>
+            <div class="grid-data">Day</div>
+            <div class="grid-data">Year</div>
+            <div class="grid-data">Date of birth:</div>
+          <input class="inupt1 grid-data month" id="numberInput" type="number"  onmouseleave="" required>
+          <input class="inupt1 grid-data day1" type="number" maxlength="2" required>
+          <input class="inupt2 grid-data year1" type="number" maxlength="4" required>
+
+            <div class="grid-data">Current Date:</div>
+            <input class="inupt1 grid-data month2"  type="number" maxlength="2" required>
+            <input class="inupt1 grid-data day2" type="number" maxlength="2" required>
+            <input class="inupt2 grid-data year2" type="number" maxlength="4" required>
+        </div>
+        <div class="warning" style="margin: 10px;"></div>
+        <div class="button-input">
+            <button class="clearButton buttons" style="margin-left: 15px;">Clear</button>
+            <button class="buttons submit">Calculate</button>
+        </div>
+        <div class="result">
+            <!-- <textarea class="answer" type="text" placeholder="Your age..." disabled  > -->
+                <textarea name="result" id="answer" class="answer" disabled placeholder="Your age ..."></textarea>
+        </div>
+    </div>
+    
+</body>
+<script>
+    // const arr = [month1,month2,day1,day2]
+  
+// *********** Month 1 input*************
+    const month1 = document.querySelector(".month")
+const warning = document.querySelector(".warning")
+
+month1.addEventListener('input', () => {
+    const maxLength = 2;
+    if (month1.value.length > maxLength) {
+      month1.value = month1.value.slice(0, maxLength);
+    }
+  });
+
+month1.addEventListener("input",()=>{
+    if (month1.value.length > 2 ||month1.value > 12 ||month1.value == 0) {
+        warning.textContent = "Please enter DOB month between 1 to 12"
+        warning.style.color = "red"
+    }
+    else{
+        warning.textContent = ""
+    }
+})
+
+
+//   ************** Day 1 input****************
+const day1= document.querySelector(".day1")
+
+day1.addEventListener('input', () => {
+    const maxLength = 2;
+    if (day1.value.length > maxLength) {
+      day1.value = day1.value.slice(0, maxLength);
+    }
+  });
+day1.addEventListener("input",()=>{
+    if (day1.value.length > 2 ||day1.value > 31 ||day1.value == 0) {
+        warning.textContent = "Please enter DOB Day between 1 to 31"
+        warning.style.color = "red"
+    }
+    else{
+        warning.textContent = ""
+    }
+})
+
+
+
+//   ******************Year 1*********************
+const year1 = document.querySelector(".year1")
+
+year1.addEventListener('input', () => {
+    const maxLength = 4;
+    if (year1.value.length > maxLength) {
+      year1.value = year1.value.slice(0, maxLength);
+    }
+  });
+
+year1.addEventListener("input",()=>{
+    if (year1.value.length > 4 ||year1.value == 0) {
+        warning.textContent = "Please enter the year"
+        warning.style.color = "red"
+    }
+    else{
+        warning.textContent = ""
+    }
+})
+//*****************Month2************************
+
+const date = new Date()
+ month = date.getMonth()
+
+
+month2 = document.querySelector(".month2")
+month2.addEventListener('input', () => {
+    const maxLength = 2;
+    if (month2.value.length > maxLength) {
+      month2.value = month2.value.slice(0, maxLength);
+    }
+  });
+
+month2.addEventListener("input",()=>{
+    if (month2.value.length > 2 ||month2.value > 12 ||month2.value == 0) {
+        warning.textContent = "Please enter current month between 1 to 12"
+        warning.style.color = "red"
+    }
+    else{
+        warning.textContent = ""
+    }
+})
+// ***************************Day 2**************************
+const day2= document.querySelector(".day2")
+
+day2.addEventListener('input', () => {
+    const maxLength = 2;
+    if (day2.value.length > maxLength) {
+      day2.value = day2.value.slice(0, maxLength);
+    }
+  });
+day2.addEventListener("input",()=>{
+    if (day2.value.length > 2 ||day2.value > 31 ||day2.value == 0) {
+        warning.textContent = "Please enter current Day between 1 to 31"
+        warning.style.color = "red"
+    }
+    else{
+        warning.textContent = ""
+    }
+})
+// ******************Year 2************************
+const year2 = document.querySelector(".year2")
+
+year2.addEventListener('input', () => {
+    const maxLength = 4;
+    if (year2.value.length > maxLength) {
+      year2.value = year2.value.slice(0, maxLength);
+    }
+  });
+
+year2.addEventListener("input",()=>{
+    if (year2.value.length > 4 ||year2.value == 0) {
+        warning.textContent = "Please enter the year"
+        warning.style.color = "red"
+    }
+    else{
+        warning.textContent = ""
+    }
+})
+// ************* Calculate button******************
+
+
+// ********* Clear button**************
+const clear = document.querySelector(".clearButton")
+const allVar = document.querySelectorAll(".month,.day1")
+    clear.addEventListener("click",()=>{
+        month1.value = '';
+        month2.value = '';
+        day1.value = '';
+        day2.value = '';
+        year1.value = '';
+        year2.value = '';
+        textArea.value = '';
+    })
+    // clear.values = "12"
+ 
+    const yourAge = document.querySelector(".submit")
+    const textArea = document.querySelector(".answer")
+
+    // const age = `your age is ${yearValue}${monthValue}${dayValue}`
+    yourAge.addEventListener("submit", function(event) {
+        event.preventDefault()})
+        const monthValue = month1.value - month.value; 
+    const dayValue = day2.value - day1.value;
+    const yearValue = year2.value - year1.value; 
+    textArea.textContent = `your age is ${yearValue} year ${monthValue}months${dayValue}days`
+    
+    // yourAge.addEventListener("submit",()=>{
+    //     textArea.textContent = `your age is ${yearValue}${monthValue}${dayValue}`
+    // })
+
+</script>
+</html>
